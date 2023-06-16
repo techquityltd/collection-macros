@@ -16,7 +16,7 @@ class Macros
     {
         return function($key, $value, $after) {
             $index = $this->keys()->search($after, true);
-            $index = $index ? $index + 1 : $this->count();
+            $index = $index !== false ? $index + 1 : $this->count();
             return $this->take($index)->put($key, $value)->merge($this->take($index - $this->count()));
         };
     }
